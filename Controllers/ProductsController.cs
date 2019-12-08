@@ -20,13 +20,11 @@ namespace Storage.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ProductViewdetails()
+        public IActionResult ProductView()
         {
+
             var productlist = _context.Product.ToList();
-
-
-            var productviewlist = new IEnumerable<ProductView>();
-
+            IEnumerable< ProductView> productviewlist = new List<ProductView>();
 
             productviewlist = productlist.Select(s => new ProductView
             {
@@ -37,7 +35,7 @@ namespace Storage.Controllers
 
             }).ToList();
 
-            return View(await _context.productviewlist);
+            return View(productviewlist);
 
         }
 
